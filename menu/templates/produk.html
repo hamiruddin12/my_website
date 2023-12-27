@@ -17,5 +17,29 @@
 
         </li>
     </ul>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Kirim">
+    </form>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nama Produk</th>
+            <th>Opsi</th>
+        </tr>
+
+        {% for dt in produk %}
+        <tr>
+            <td>{{dt.id}}</td>
+            <td>{{dt.nama}}</td>
+            <td>
+                <a href="{% url 'hapus-produk' dt.id %}">Hapus</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
 </body>
 </html> 
